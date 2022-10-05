@@ -16,17 +16,11 @@ def transform_txt(data):
   for i in range(len(data)):
     temp = data[0][i].split()
     tempx.append(float(temp[0]))
-    if temp[1]!= 'LTN':
-      tempy.append(int(temp[1]))
-    else:
-      tempy.append(temp[1])
-  del tempx[0]
-  del tempy[0]
+    tempy.append(int(temp[1]))
   return tempx,tempy
 def draw_xrd():
   my_x_ticks = np.arange(10,90,10)
   fig, axs = plt.subplots(len(datax),1,sharex=True)
-  st.write(len(datax))
   # 移除垂直方向的空白
   fig.subplots_adjust(hspace=0)
   # 绘制
@@ -56,7 +50,7 @@ def draw ():
     f = draw_xrd()
     st.pyplot(f)
 # 上传文件
-uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True)
+uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True,key='basic')
 # 文件上传完毕，推送到数组中
 if uploaded_files:
   for file in uploaded_files:
@@ -69,8 +63,11 @@ if uploaded_files:
     datax.append(tempx)
     datay.append(tempy)
     file_name_arr.append(file_name)
+  for i in range(len(datax)):
     # 配置
-    st.sidebar.write(file_name,"的配置文件")
-    line_color = st.sidebar.color_picker('选择颜色', '#FF0000',key=file_name)
+    st.sidebar.write(file_name_arr[i],"的配置文件")
+    line_color = st.sidebar.color_picker('选择颜色', '#FF0000',key=file_name_arr[i])
     color_arr.append(line_color)
+    st.sidebar.file_uploader("上传标准PDF卡片文件", type="txt",accept_multiple_files=True,key=i)
+
 st.button("绘图",on_click=draw)

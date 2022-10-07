@@ -56,7 +56,8 @@ def draw ():
       array= pd.read_table(child,sep="\t", header=None)
       # 拿到x,y轴的数据放入数组中
       tempx,tempy = transform_txt(array)
-      axs[i].scatter(tempx,tempy,linewidth=1,color='black',label=child_name,marker='*')
+      bottom,top = axs[i].get_ylim()
+      axs[i].vlines(tempx,bottom,top,color='red',linestyles='dashed')
   fig
 # 上传文件
 uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True,key='basic')

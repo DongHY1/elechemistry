@@ -58,6 +58,9 @@ def draw ():
       bottom,top = axs[i].get_ylim()
       axs[i].vlines(tempx,bottom,top,color='red',linestyles='dashed')
   fig
+
+
+
 # 上传文件
 uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True,key='basic')
 # 文件上传完毕，推送到数组中

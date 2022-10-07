@@ -17,10 +17,10 @@ def transform_txt(data):
   tempx = np.array(data[0])+0.8663
   tempy = np.array(data[1])/0.237
   return tempx,tempy
-def draw_orr_cv(x,y,name,index):
+def draw_orr(x,y,name,index):
     get_orr_lsv_info(x,y)
     # 生成一个曲线图
-    ax.plot(x,y,linewidth=1,color=color_arr[index],label=name)
+    ax.plot(x,y,linewidth=3,color=color_arr[index],label=name)
     plt.xlabel('E (V vs.RHE)',fontsize=16,family='Times New Roman',fontweight='bold')
     plt.ylabel('J (mA cm-2)',fontsize=16,family='Times New Roman',fontweight='bold')
     plt.xticks(fontsize=14,family='Times New Roman',fontweight='bold')
@@ -66,39 +66,40 @@ if uploaded_files:
     line_color = st.sidebar.color_picker('选择颜色', '#FF0000',key=file_name)
     color_arr.append(line_color)
     # 绘图
-    plt = draw_orr_cv(tempx,tempy,file_name,index)
+    plt = draw_orr(tempx,tempy,file_name,index)
     font = font_manager.FontProperties(family='Times New Roman',weight='bold',style='normal',size=12)
     plt.legend(loc='upper left',prop=font,edgecolor='white')
 " ## 图例 🎉"
 fig
-" ## 极限电流密度表"
-def draw_density_bar(data):
-  fig,ax = plt.subplots()
-  for index,file in enumerate(data):
-    ax.bar(file_name_arr[index],file*(-1),color=color_arr[index])
-  plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
-  plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
-  plt.ylabel('J (mA cm-2)',fontsize=16,family='Times New Roman',fontweight='bold')
-  for a,b in zip(file_name_arr,data):
-    plt.text(a,b*(-1),b*(-1),ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
-  return fig
-density_fig= draw_density_bar(density_arr)
-density_fig
-" ## 起始电位表"
-def draw_voltage_bar(data,xlim,ylim):
-  fig,ax = plt.subplots()
-  for index,file in enumerate(data):
-    ax.bar(file_name_arr[index],file,color=color_arr[index])
-    ax.set_ylim(xlim,ylim)
-  plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
-  plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
-  plt.ylabel('Voltage (V)',fontsize=16,family='Times New Roman',fontweight='bold')
-  for a,b in zip(file_name_arr,data):
-    plt.text(a,b,b,ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
-  return fig
-start_fig = draw_voltage_bar(start_voltage,0.8,1.1)
-start_fig
-" ## 半波电位表"
-half_fig = draw_voltage_bar(half_voltage,0.6,0.9)
-half_fig
+if option == 'LSV':
+  " ## 极限电流密度表"
+  def draw_density_bar(data):
+    fig,ax = plt.subplots()
+    for index,file in enumerate(data):
+      ax.bar(file_name_arr[index],file*(-1),color=color_arr[index])
+    plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
+    plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
+    plt.ylabel('J (mA cm-2)',fontsize=16,family='Times New Roman',fontweight='bold')
+    for a,b in zip(file_name_arr,data):
+      plt.text(a,b*(-1),b*(-1),ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
+    return fig
+  density_fig= draw_density_bar(density_arr)
+  density_fig
+  " ## 起始电位表"
+  def draw_voltage_bar(data,xlim,ylim):
+    fig,ax = plt.subplots()
+    for index,file in enumerate(data):
+      ax.bar(file_name_arr[index],file,color=color_arr[index])
+      ax.set_ylim(xlim,ylim)
+    plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
+    plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
+    plt.ylabel('E (V vs.RHE)',fontsize=16,family='Times New Roman',fontweight='bold')
+    for a,b in zip(file_name_arr,data):
+      plt.text(a,b,b,ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
+    return fig
+  start_fig = draw_voltage_bar(start_voltage,0.8,1.1)
+  start_fig
+  " ## 半波电位表"
+  half_fig = draw_voltage_bar(half_voltage,0.6,0.9)
+  half_fig
 

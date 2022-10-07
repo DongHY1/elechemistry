@@ -31,16 +31,16 @@ def draw_xrd():
     axs[i].set_xlim(10,80)
     # 设置横纵坐标刻度
     axs[i].set_xticks(my_x_ticks)
-    axs[i].set_xticklabels(my_x_ticks,family='Times New Roman',fontsize=14,fontweight='bold')
+    axs[i].set_xticklabels(my_x_ticks,family='Arial',fontsize=14,fontweight='bold')
     axs[i].set_yticks([])
     # 设置图例
     # 字体
-    font = font_manager.FontProperties(family='Times New Roman',weight='bold',style='normal',size=12)
+    font = font_manager.FontProperties(family='Arial',weight='bold',style='normal',size=12)
     axs[i].legend(loc='upper right',prop=font,labelcolor=color_arr[i],edgecolor='white')
     
   # 绘图
-  fig.supxlabel(t='2 Theta',x=0.5,y=0.01,fontsize=16,family='Times New Roman',fontweight='bold')
-  fig.supylabel(t='Intensity(a.u)',x=0.08,y=0.5,fontsize=16,family='Times New Roman',fontweight='bold')
+  fig.supxlabel(t='2 Theta',x=0.5,y=0.01,fontsize=16,family='Arial',fontweight='bold')
+  fig.supylabel(t='Intensity(a.u)',x=0.08,y=0.5,fontsize=16,family='Arial',fontweight='bold')
   
   return fig,axs
 def draw ():

@@ -21,10 +21,10 @@ def draw_orr(x,y,name,index):
     get_orr_lsv_info(x,y)
     # 生成一个曲线图
     ax.plot(x,y,linewidth=3,color=color_arr[index],label=name)
-    plt.xlabel('E (V vs.RHE)',fontsize=16,family='Times New Roman',fontweight='bold')
-    plt.ylabel('J (mA cm-2)',fontsize=16,family='Times New Roman',fontweight='bold')
-    plt.xticks(fontsize=14,family='Times New Roman',fontweight='bold')
-    plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
+    plt.xlabel('E (V vs.RHE)',fontsize=16,family='Arial',fontweight='bold')
+    plt.ylabel('J (mA cm-2)',fontsize=16,family='Arial',fontweight='bold')
+    plt.xticks(fontsize=14,family='Arial',fontweight='bold')
+    plt.yticks(fontsize=14,family='Arial',fontweight='bold')
     if option == 'LSV':
       ax.set_xlim(0.2,1.0)
       ax.set_ylim(-6.5,0)
@@ -67,7 +67,7 @@ if uploaded_files:
     color_arr.append(line_color)
     # 绘图
     plt = draw_orr(tempx,tempy,file_name,index)
-    font = font_manager.FontProperties(family='Times New Roman',weight='bold',style='normal',size=12)
+    font = font_manager.FontProperties(family='Arial',weight='bold',style='normal',size=12)
     plt.legend(loc='upper left',prop=font,edgecolor='white')
 " ## 图例 🎉"
 fig
@@ -77,11 +77,11 @@ if option == 'LSV':
     fig,ax = plt.subplots()
     for index,file in enumerate(data):
       ax.bar(file_name_arr[index],file*(-1),color=color_arr[index])
-    plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
-    plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
-    plt.ylabel('J (mA cm-2)',fontsize=16,family='Times New Roman',fontweight='bold')
+    plt.xticks(fontsize=10,family='Arial',fontweight='bold',rotation=45)
+    plt.yticks(fontsize=14,family='Arial',fontweight='bold')
+    plt.ylabel('J (mA cm-2)',fontsize=16,family='Arial',fontweight='bold')
     for a,b in zip(file_name_arr,data):
-      plt.text(a,b*(-1),b*(-1),ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
+      plt.text(a,b*(-1),b*(-1),ha='center',va='bottom',fontsize=13,family='Arial',fontweight='bold')
     return fig
   density_fig= draw_density_bar(density_arr)
   density_fig
@@ -91,11 +91,11 @@ if option == 'LSV':
     for index,file in enumerate(data):
       ax.bar(file_name_arr[index],file,color=color_arr[index])
       ax.set_ylim(xlim,ylim)
-    plt.xticks(fontsize=10,family='Times New Roman',fontweight='bold',rotation=45)
-    plt.yticks(fontsize=14,family='Times New Roman',fontweight='bold')
-    plt.ylabel('E (V vs.RHE)',fontsize=16,family='Times New Roman',fontweight='bold')
+    plt.xticks(fontsize=10,family='Arial',fontweight='bold',rotation=45)
+    plt.yticks(fontsize=14,family='Arial',fontweight='bold')
+    plt.ylabel('E (V vs.RHE)',fontsize=16,family='Arial',fontweight='bold')
     for a,b in zip(file_name_arr,data):
-      plt.text(a,b,b,ha='center',va='bottom',fontsize=13,family='Times New Roman',fontweight='bold')
+      plt.text(a,b,b,ha='center',va='bottom',fontsize=13,family='Arial',fontweight='bold')
     return fig
   start_fig = draw_voltage_bar(start_voltage,0.8,1.1)
   start_fig

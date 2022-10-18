@@ -5,13 +5,18 @@ import streamlit as st
 import pandas as pd
 import re
 st.title("HER_LSV数据分析")
+x_start=st.sidebar.number_input('选择X轴开始')
+x_end=st.sidebar.number_input('选择X轴结束')
+y_start=st.sidebar.number_input('选择Y轴开始')
+y_end=st.sidebar.number_input('选择Y轴结束')
+y_end_1=st.sidebar.number_input('选择过点位表结束')
 file_name_arr=[]
 color_arr=[]
 over_voltage=[]
 fig,ax = plt.subplots()
 # 横坐标
 def transform_txt(data):
-  tempx = (np.array(data[0])+0.8663)*1000
+  tempx = (np.array(data[0])+0.9122)*1000
   tempy = np.array(data[1])/0.237
   return tempx,tempy
 def get_her_lsv_info(x,y):
@@ -29,8 +34,8 @@ def draw_her(x,y,name,index):
     plt.xticks(fontsize=14,family='Arial',fontweight='bold')
     plt.yticks(fontsize=14,family='Arial',fontweight='bold')
     plt.axhline(-10,c="grey",lw=2,ls="--")
-    ax.set_xlim(-300,0)
-    ax.set_ylim(-20,5)
+    ax.set_xlim(x_start,x_end)
+    ax.set_ylim(y_start,y_end)
     return plt
 # 上传文件
 uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True,key='basic')
@@ -60,7 +65,7 @@ def draw_voltage_bar(data):
     newdata = np.array(data)*-1
     for index,file in enumerate(newdata):
       ax.bar(file_name_arr[index],file,color=color_arr[index])
-      ax.set_ylim(50,100)
+      ax.set_ylim(0,y_end_1)
     plt.xticks(fontsize=10,family='Arial',fontweight='bold',rotation=45)
     plt.yticks(fontsize=14,family='Arial',fontweight='bold')
     plt.ylabel('Potential (mV vs.RHE)',fontsize=16,family='Arial',fontweight='bold')

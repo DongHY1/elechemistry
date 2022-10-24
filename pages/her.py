@@ -32,7 +32,7 @@ def draw_her(x,y,name,index):
     # 生成一个曲线图
     ax.plot(x,y,linewidth=3,color=color_arr[index],label=name)
     plt.xlabel('Potential (mV vs.RHE)',fontsize=16,family='Arial',fontweight='bold')
-    plt.ylabel('Current density (mA cm-2)',fontsize=16,family='Arial',fontweight='bold')
+    plt.ylabel('Current density (mA $\mathregular{cm^{-2}}$)',fontsize=16,family='Arial',fontweight='bold')
     plt.xticks(fontsize=14,family='Arial',fontweight='bold')
     plt.yticks(fontsize=14,family='Arial',fontweight='bold')
     plt.axhline(-10,c="grey",lw=2,ls="--")

@@ -22,7 +22,7 @@ def draw_orr(x,y,name,index):
     # 生成一个曲线图
     ax.plot(x,y,linewidth=3,color=color_arr[index],label=name)
     plt.xlabel('E (V vs.RHE)',fontsize=16,family='Arial',fontweight='bold')
-    plt.ylabel('J (mA cm-2)',fontsize=16,family='Arial',fontweight='bold')
+    plt.ylabel('J (mA $\mathregular{cm^{-2}}$)',fontsize=16,family='Arial',fontweight='bold')
     plt.xticks(fontsize=14,family='Arial',fontweight='bold')
     plt.yticks(fontsize=14,family='Arial',fontweight='bold')
     if option == 'LSV':
@@ -79,7 +79,7 @@ if option == 'LSV':
       ax.bar(file_name_arr[index],file*(-1),color=color_arr[index])
     plt.xticks(fontsize=10,family='Arial',fontweight='bold',rotation=45)
     plt.yticks(fontsize=14,family='Arial',fontweight='bold')
-    plt.ylabel('J (mA cm-2)',fontsize=16,family='Arial',fontweight='bold')
+    plt.ylabel('J (mA $\mathregular{cm^{-2}}$)',fontsize=16,family='Arial',fontweight='bold')
     for a,b in zip(file_name_arr,data):
       plt.text(a,b*(-1),b*(-1),ha='center',va='bottom',fontsize=13,family='Arial',fontweight='bold')
     return fig

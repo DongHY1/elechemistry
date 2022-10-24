@@ -1,3 +1,4 @@
+from turtle import color
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as font_manager
 import numpy as np
@@ -10,6 +11,7 @@ x_end=st.sidebar.number_input('选择X轴结束')
 y_start=st.sidebar.number_input('选择Y轴开始')
 y_end=st.sidebar.number_input('选择Y轴结束')
 y_end_1=st.sidebar.number_input('选择过点位表结束')
+font = font_manager.FontProperties(family='Arial',weight='bold',style='normal',size=12)
 file_name_arr=[]
 color_arr=[]
 over_voltage=[]
@@ -36,7 +38,6 @@ def draw_her(x,y,name,index):
     plt.axhline(-10,c="grey",lw=2,ls="--")
     ax.set_xlim(x_start,x_end)
     ax.set_ylim(y_start,y_end)
-    return plt
 # 上传文件
 uploaded_files = st.file_uploader("上传txt文件", type="txt",accept_multiple_files=True,key='basic')
 # 文件上传完毕，推送到数组中
@@ -54,9 +55,8 @@ if uploaded_files:
     line_color = st.sidebar.color_picker('选择颜色', '#FF0000',key=file_name)
     color_arr.append(line_color)
     # 绘图
-    plt = draw_her(tempx,tempy,file_name,index)
-    font = font_manager.FontProperties(family='Arial',weight='bold',style='normal',size=12)
-    plt.legend(loc='upper left',prop=font,edgecolor='white')
+    draw_her(tempx,tempy,file_name,index)
+    plt.legend(loc='upper left',prop=font,edgecolor='white',labelcolor='linecolor')
 " ## 图例 🎉"
 fig
 " ## 过电位表"

@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Magnification is defined on the scale bar in the image
-Magnification=200
+Magnification=500
 
 img = cv2.imread('2.jpg',0)
 img = cv2.medianBlur(img,5)

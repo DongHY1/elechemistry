@@ -68,7 +68,12 @@ if uploaded_files:
     # 绘图
     plt = draw_orr(tempx,tempy,file_name,index)
     font = font_manager.FontProperties(family='Arial',weight='bold',style='normal',size=12)
-    plt.legend(loc='upper left',prop=font,edgecolor='white',labelcolor='linecolor')
+    ax = plt.gca()
+    ax.spines['bottom'].set_linewidth(2)
+    ax.spines['left'].set_linewidth(2)
+    ax.spines['right'].set_linewidth(2)
+    ax.spines['top'].set_linewidth(2)
+    plt.legend(loc='lower right',prop=font,edgecolor='white',labelcolor='linecolor')
 " ## 图例 🎉"
 fig
 if option == 'LSV':
